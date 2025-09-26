@@ -2,16 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #fff;
-  color: #101282;
+  padding: 24px 120px;
+  background-color: #f2f4f7;
+  color: #101828;
+  margin-bottom: 4px;
 }
 
 .header a {
   text-decoration: none;
-  color: #101282;
-  font-size: 1.5rem;
-  font-weight: bold;
+  color: #101828;
 }
 
 .header a:hover {
@@ -23,15 +22,18 @@
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 1rem;
+  gap: 32px;
   width: 136px;
   height: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
 }
 
 .navigation li a {
   text-decoration: none;
-  color: #101282;
-  font-size: 1rem;
+  color: #101828;
 }
 
 .navigation li a:hover {

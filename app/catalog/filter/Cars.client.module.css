@@ -1,0 +1,17 @@
+.header {
+  width: 924px;
+  height: 68px;
+  margin-top: 84px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.button {
+  border-radius: 12px;
+  padding: 12px 51px;
+  width: 156px;
+  height: 44px;
+  background-color: #3470ff;
+  border: none;
+}
+.catalog {
+}

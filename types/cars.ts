@@ -1,12 +1,4 @@
-export interface Cars {
-  brand: string;
-  rentalPricet: string;
-  minMileage: string;
-  maxMileage: string;
-  limit: string;
-  page: string;
-}
-export interface CarResponse {
+export interface Car {
   id: string;
   year: number;
   brand: string;

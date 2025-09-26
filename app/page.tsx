@@ -1,6 +1,10 @@
+"use client";
 import css from "./page.module.css";
 
 export default function Home() {
+  const handleClick = () => {
+    window.location.href = "/catalog/filter";
+  };
   return (
     <div>
       <main>
@@ -12,7 +16,10 @@ export default function Home() {
                 Reliable and budget-friendly rentals for any journey
               </p>
             </div>
-            <button className={css.bttn}>View Catalog</button>
+
+            <button className={css.bttn} onClick={handleClick}>
+              View Catalog
+            </button>
           </div>
         </div>
       </main>
