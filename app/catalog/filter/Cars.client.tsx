@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import CarsList from "@/components/CarsList/CarsList";
 
 import { Car } from "@/types/cars";
+import Filter from "@/components/Filter/Filter";
 
 const CarsClient = () => {
   const [page, setPage] = useState(1);
@@ -63,11 +64,7 @@ const CarsClient = () => {
 
   return (
     <div>
-      <header className={css.header}>
-        <button className={`${css.button} ${css.search}`} onClick={() => {}}>
-          Search
-        </button>
-      </header>
+      <Filter />
 
       {isLoading && !data && <div>Loading...</div>}
 

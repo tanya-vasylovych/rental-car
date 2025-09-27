@@ -79,3 +79,6 @@
   background-color: #f7f7f7;
   border: none;
 }
+.sendButton:hover {
+  background: #0b44cd;
+}

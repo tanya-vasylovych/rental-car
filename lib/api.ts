@@ -39,3 +39,7 @@ export async function fetchCarById(id: string): Promise<Car> {
   const { data } = await instance.get<Car>(`/cars/${id}`);
   return data;
 }
+export async function fetchBrands(): Promise<string[]> {
+  const { data } = await instance.get<string[]>("/brands");
+  return data;
+}

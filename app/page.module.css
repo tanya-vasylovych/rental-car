@@ -61,3 +61,6 @@
   white-space: nowrap;
   cursor: pointer;
 }
+.bttn:hover {
+  background: #0b44cd;
+}
