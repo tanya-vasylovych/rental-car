@@ -1,12 +1,13 @@
 .container {
-  margin: 0px auto;
+  margin: 0 auto;
   background-image: url("/hero.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  height: calc(100vh - 64px);
-  width: 100vw;
+  height: 832px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .title {

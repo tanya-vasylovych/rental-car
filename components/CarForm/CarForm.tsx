@@ -8,14 +8,24 @@ interface FormData {
   comment?: string;
 }
 
+const getTodayDate = () => {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  return `${yyyy}-${mm}-${dd}`;
+};
+
 const CarForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    date: "",
+    date: getTodayDate(),
     comment: "",
   });
+
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,11 +52,17 @@ const CarForm = () => {
 
     if (Object.keys(currentErrors).length === 0) {
       console.log("Form data:", formData);
-      // reset form
+
+      setShowNotification(true);
+
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 3000);
+
       setFormData({
         name: "",
         email: "",
-        date: "",
+        date: getTodayDate(),
         comment: "",
       });
     }
@@ -60,6 +76,13 @@ const CarForm = () => {
           Stay connected! We are always ready to help you.
         </p>
       </div>
+
+      {showNotification && (
+        <div className={css.notification}>
+          ✅ Your car has been successfully booked!
+        </div>
+      )}
+
       <form className={css.form} onSubmit={handleSubmit}>
         <input
           id="name"
@@ -71,7 +94,7 @@ const CarForm = () => {
           onChange={handleChange}
           required
         />
-        {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
+        {errors.name && <span className={css.error}>{errors.name}</span>}
 
         <input
           id="email"
@@ -83,13 +106,13 @@ const CarForm = () => {
           onChange={handleChange}
           required
         />
-        {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
+        {errors.email && <span className={css.error}>{errors.email}</span>}
 
         <input
           id="date"
-          type="text"
+          type="date"
           name="date"
-          className={css.input}
+          className={css.inputDate}
           placeholder="Booking date"
           value={formData.date}
           onChange={handleChange}
