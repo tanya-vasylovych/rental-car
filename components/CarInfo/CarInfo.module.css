@@ -1,0 +1,28 @@
+.container {
+  width: 488px;
+  height: 772px;
+  margin-top: 68px;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+.title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: #101828;
+  margin-bottom: 20px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #101828;
+}

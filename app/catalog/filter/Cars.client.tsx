@@ -64,7 +64,7 @@ const CarsClient = () => {
   return (
     <div>
       <header className={css.header}>
-        <button className={css.button} onClick={() => {}}>
+        <button className={`${css.button} ${css.search}`} onClick={() => {}}>
           Search
         </button>
       </header>

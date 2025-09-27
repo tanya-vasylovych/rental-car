@@ -6,12 +6,26 @@
   margin-right: auto;
 }
 .button {
+  border: 1px solid #3470ff;
   border-radius: 12px;
   padding: 12px 51px;
   width: 156px;
   height: 44px;
-  background-color: #3470ff;
-  border: none;
+  background-color: #fff;
+  color: #101828;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  display: flex;
+  cursor: pointer;
+  margin: 80 auto;
 }
-.catalog {
+.search {
+  background: #3470ff;
+  border: none;
+  color: #fff;
 }
