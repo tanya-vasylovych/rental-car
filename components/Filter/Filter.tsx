@@ -1,5 +1,6 @@
 import { useState } from "react";
 import css from "./Filter.module.css";
+import { FaChevronDown } from "react-icons/fa";
 
 const brands = [
   "Aston Martin",
@@ -83,32 +84,37 @@ const Filter = () => {
 
   return (
     <div className={css.container}>
-      <select
-        className={css.select}
-        value={selectedBrand}
-        onChange={handleBrandChange}
-      >
-        <option value="">Select a brand</option>
-        {brands.map((brand) => (
-          <option key={brand} value={brand}>
-            {brand}
-          </option>
-        ))}
-      </select>
+      <div className={css.selectWrapper}>
+        <select
+          className={css.select}
+          value={selectedBrand}
+          onChange={handleBrandChange}
+        >
+          <option value="">Select a brand</option>
+          {brands.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
+        </select>
+        <FaChevronDown className={css.selectIcon} />
+      </div>
 
-      <select
-        className={css.select}
-        value={selectedPrice}
-        onChange={handlePriceChange}
-      >
-        <option value="">Select a price</option>
-        {prices.map((price) => (
-          <option key={price} value={price}>
-            {price}
-          </option>
-        ))}
-      </select>
-
+      <div className={css.selectWrapper}>
+        <select
+          className={css.select}
+          value={selectedPrice}
+          onChange={handlePriceChange}
+        >
+          <option value="">Select a price</option>
+          {prices.map((price) => (
+            <option key={price} value={price}>
+              {price}
+            </option>
+          ))}
+        </select>
+        <FaChevronDown className={css.selectIcon} />
+      </div>
       <MileageRangeInput
         from={mileageFrom}
         to={mileageTo}
