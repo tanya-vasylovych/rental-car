@@ -20,6 +20,23 @@
   height: auto;
   border-radius: 14px;
 }
+.imageWrapper {
+  position: relative;
+  width: 276px;
+  height: 268px;
+}
+
+.heartIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.2s ease;
+}
+
 .title {
   font-size: 18px;
   font-weight: 600;
