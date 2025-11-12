@@ -44,3 +44,9 @@
   color: #101828;
   margin-top: 32px;
 }
+.location {
+  height: 16px;
+  width: 16px;
+  margin-right: 2px;
+  padding-top: 2px;
+}

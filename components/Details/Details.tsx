@@ -1,5 +1,6 @@
 import css from "./Details.module.css";
 import type { Car } from "../../types/cars";
+import { IoLocationOutline } from "react-icons/io5";
 
 interface CarsListProps {
   car: Car;
@@ -18,6 +19,7 @@ const Details = ({ car }: CarsListProps) => {
         <span className={css.id}>{`Id:${car.id.slice(0, 4)}`}</span>
       </h2>
       <p className={css.content}>
+        <IoLocationOutline className={css.location} />
         <span>{location}</span>
         <span style={{ marginLeft: 16 }}>
           Mileage: {car.mileage.toLocaleString("ru-RU")} km

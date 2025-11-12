@@ -1,5 +1,8 @@
 import css from "./CarInfo.module.css";
 import type { Car } from "../../types/cars";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import { BsCalendar2Week, BsCarFront, BsFuelPump } from "react-icons/bs";
+import { HiOutlineCog8Tooth } from "react-icons/hi2";
 
 interface CarsListProps {
   car: Car;
@@ -15,6 +18,7 @@ const CarInfo = ({ car }: CarsListProps) => {
           {Array.isArray(car.rentalConditions)
             ? car.rentalConditions.map((item, index) => (
                 <li className={css.item} key={index}>
+                  <IoCheckmarkCircleOutline className={css.checkmark} />
                   {item}
                 </li>
               ))
@@ -25,12 +29,22 @@ const CarInfo = ({ car }: CarsListProps) => {
         <h3 className={css.title}>Car Specifications: </h3>
         <ul className={css.list}>
           {" "}
-          <li className={css.item}>{`Year: ${car.year}`}</li>
-          <li className={css.item}>{`Type: ${car.type}`}</li>
-          <li
-            className={css.item}
-          >{`Fuel Consumption: ${car.fuelConsumption}`}</li>
-          <li className={css.item}>{`Engine Size: ${car.engineSize}`}</li>
+          <li className={css.item}>
+            <BsCalendar2Week className={css.checkmark} />
+            {`Year: ${car.year}`}
+          </li>
+          <li className={css.item}>
+            <BsCarFront className={css.checkmark} />
+            {`Type: ${car.type}`}
+          </li>
+          <li className={css.item}>
+            <BsFuelPump className={css.checkmark} />
+            {`Fuel Consumption: ${car.fuelConsumption}`}
+          </li>
+          <li className={css.item}>
+            <HiOutlineCog8Tooth className={css.checkmark} />
+            {`Engine Size: ${car.engineSize}`}
+          </li>
         </ul>
       </div>
       <div>
@@ -42,6 +56,7 @@ const CarInfo = ({ car }: CarsListProps) => {
             )
             .map((item, index) => (
               <li className={css.item} key={index}>
+                <IoCheckmarkCircleOutline className={css.checkmark} />
                 {item}
               </li>
             ))}

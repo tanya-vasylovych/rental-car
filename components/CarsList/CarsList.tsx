@@ -30,6 +30,7 @@ const CarsList = ({ cars }: CarsListProps) => {
     <ul className={css.list}>
       {cars.map((car) => {
         const parts = car.address.split(",").map((part: string) => part.trim());
+
         const shortAddress = parts.slice(-2).join(" | ");
 
         const isFavorite = favorites.has(car.id);
