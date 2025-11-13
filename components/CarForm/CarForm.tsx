@@ -8,24 +8,17 @@ interface FormData {
   comment?: string;
 }
 
-const getTodayDate = () => {
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
-};
-
 const CarForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    date: getTodayDate(),
+    date: "",
     comment: "",
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [showNotification, setShowNotification] = useState(false);
+  const [dateInputType, setDateInputType] = useState<"text" | "date">("text");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -36,7 +29,12 @@ const CarForm = () => {
       [name]: value,
     }));
   };
-
+  const handleDateFocus = () => setDateInputType("date");
+  const handleDateBlur = () => {
+    if (!formData.date) {
+      setDateInputType("text");
+    }
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const currentErrors: Partial<FormData> = {};
@@ -62,7 +60,7 @@ const CarForm = () => {
       setFormData({
         name: "",
         email: "",
-        date: getTodayDate(),
+        date: "",
         comment: "",
       });
     }
@@ -110,12 +108,14 @@ const CarForm = () => {
 
         <input
           id="date"
-          type="date"
+          type={dateInputType}
           name="date"
           className={css.inputDate}
           placeholder="Booking date"
           value={formData.date}
           onChange={handleChange}
+          onFocus={handleDateFocus}
+          onBlur={handleDateBlur}
         />
 
         <input
