@@ -18,7 +18,7 @@
 }
 .listItem:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 15px rgba(52, 112, 253, 0.1);
 }
 .img {
   width: 276px;
@@ -70,7 +70,7 @@
 .button {
   align-self: flex-end;
   color: #fff;
-  background-color: #3470ff;
+  background-color: rgb(52, 112, 255);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
