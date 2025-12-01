@@ -36,6 +36,13 @@ const generatePrices = (start: number, end: number, step: number): number[] => {
 
 const prices = generatePrices(30, 120, 10);
 
+type FilterValues = {
+  brand: string;
+  rentalPrice: string;
+  minMileage: string;
+  maxMileage: string;
+};
+
 const MileageRangeInput = ({
   from,
   to,
@@ -68,7 +75,11 @@ const MileageRangeInput = ({
   </div>
 );
 
-const Filter = () => {
+const Filter = ({
+  onFilterChange,
+}: {
+  onFilterChange: (filters: FilterValues) => void;
+}) => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
   const [mileageFrom, setMileageFrom] = useState("");
@@ -80,6 +91,15 @@ const Filter = () => {
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedPrice(e.target.value);
+  };
+
+  const applyFilters = () => {
+    onFilterChange({
+      brand: selectedBrand,
+      rentalPrice: selectedPrice,
+      minMileage: mileageFrom,
+      maxMileage: mileageTo,
+    });
   };
 
   return (
@@ -122,17 +142,7 @@ const Filter = () => {
         onToChange={(e) => setMileageTo(e.target.value)}
       />
 
-      <button
-        className={css.search}
-        onClick={() =>
-          console.log({
-            selectedBrand,
-            selectedPrice,
-            mileageFrom,
-            mileageTo,
-          })
-        }
-      >
+      <button className={css.search} onClick={applyFilters}>
         Search
       </button>
     </div>
