@@ -78,21 +78,21 @@ const CarsClient = () => {
       <Filter onFilterChange={handleFilterChange} />
       {isLoading && !data && <div>Loading...</div>}
       {isSuccess && data?.cars && data.cars.length > 0 ? (
-        <CarsList cars={data.cars} />
+        <>
+          <CarsList cars={data.cars} />
+          {page < data.totalPages && (
+            <button
+              className={css.button}
+              onClick={() => handlePageChange(page + 1)}
+              disabled={isLoading}
+            >
+              Load more
+            </button>
+          )}
+        </>
       ) : (
         isSuccess && <div>No cars found</div>
       )}
-      <button
-        className={css.button}
-        onClick={() => {
-          if (data && page < data.totalPages) {
-            handlePageChange(page + 1);
-          }
-        }}
-        disabled={isLoading || (data ? page >= data.totalPages : false)}
-      >
-        Load more
-      </button>
     </div>
   );
 };
