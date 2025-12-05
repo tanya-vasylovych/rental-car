@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { FavoritesProvider } from "@/components/Favorites/Favorites";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={manrope.variable}>
         <Header />
-        <main>{children}</main>
+        <main>
+          <FavoritesProvider>{children}</FavoritesProvider>
+        </main>
       </body>
     </html>
   );
