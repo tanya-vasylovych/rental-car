@@ -30,11 +30,11 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  transition: color 0.2s ease;
+  transition: border 0.2s ease;
 }
 .select:hover,
 .select:active {
-  color: rgb(52, 112, 255);
+  border: 1px solid #3470ff;
 }
 .selectIcon {
   position: absolute;
@@ -88,8 +88,12 @@
   border: none;
   background-color: #f7f7f7;
   cursor: pointer;
+  transition: border 0.2s ease;
 }
-
+.mileageInput:hover,
+.mileageInput:active {
+  border: 1px solid #3470ff;
+}
 .mileageSeparator {
   color: #8e929a;
 }
