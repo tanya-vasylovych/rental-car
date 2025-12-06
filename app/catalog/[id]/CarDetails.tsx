@@ -23,9 +23,10 @@ const CarDetails = () => {
         setError(null);
       })
       .catch((err) => {
-        setError(err);
+        setError(err.message || "Error fetching car details");
         setCar(null);
       })
+
       .finally(() => setIsLoading(false));
   }, [id]);
   return (

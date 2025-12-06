@@ -13,6 +13,7 @@ const FavoritesPage = () => {
   const router = useRouter();
   const [allCars, setAllCars] = useState<Car[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchCars("", "", "", "", "100", "1")
@@ -20,7 +21,9 @@ const FavoritesPage = () => {
         setAllCars(res.cars);
         setIsLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("Error fetching cars:", err);
+        setError("Failed to load cars. Please try again later.");
         setIsLoading(false);
       });
   }, []);
@@ -32,6 +35,8 @@ const FavoritesPage = () => {
       <h1>Обрані</h1>
       {isLoading ? (
         <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
       ) : favoriteCars.length === 0 ? (
         <p>Favorites list is empty</p>
       ) : (
