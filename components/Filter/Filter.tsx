@@ -1,6 +1,6 @@
 import { useState } from "react";
 import css from "./Filter.module.css";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const brands = [
   "Aston Martin",
@@ -84,6 +84,8 @@ const Filter = ({
   const [selectedPrice, setSelectedPrice] = useState("");
   const [mileageFrom, setMileageFrom] = useState("");
   const [mileageTo, setMileageTo] = useState("");
+  const [isBrandOpen, setIsBrandOpen] = useState(false);
+  const [isPriceOpen, setIsPriceOpen] = useState(false);
 
   const handleBrandChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedBrand(e.target.value);
@@ -109,6 +111,8 @@ const Filter = ({
           className={css.select}
           value={selectedBrand}
           onChange={handleBrandChange}
+          onFocus={() => setIsBrandOpen(true)}
+          onBlur={() => setIsBrandOpen(false)}
         >
           <option value="">Select a brand</option>
           {brands.map((brand) => (
@@ -117,7 +121,11 @@ const Filter = ({
             </option>
           ))}
         </select>
-        <FaChevronDown className={css.selectIcon} />
+        {isBrandOpen ? (
+          <FaChevronUp className={css.selectIcon} />
+        ) : (
+          <FaChevronDown className={css.selectIcon} />
+        )}
       </div>
 
       <div className={css.selectWrapper}>
@@ -125,6 +133,8 @@ const Filter = ({
           className={css.select}
           value={selectedPrice}
           onChange={handlePriceChange}
+          onFocus={() => setIsPriceOpen(true)}
+          onBlur={() => setIsPriceOpen(false)}
         >
           <option value="">Select a price</option>
           {prices.map((price) => (
@@ -133,7 +143,11 @@ const Filter = ({
             </option>
           ))}
         </select>
-        <FaChevronDown className={css.selectIcon} />
+        {isPriceOpen ? (
+          <FaChevronUp className={css.selectIcon} />
+        ) : (
+          <FaChevronDown className={css.selectIcon} />
+        )}
       </div>
       <MileageRangeInput
         from={mileageFrom}
