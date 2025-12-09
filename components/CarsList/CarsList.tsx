@@ -1,9 +1,9 @@
-import type { Car } from "../../types/cars";
 import css from "./CarList.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FiHeart } from "react-icons/fi";
-import { useFavorites } from "../Favorites/Favorites";
+import { Car } from "@/types/cars";
 
 interface CarsListProps {
   cars: Car[];
@@ -11,7 +11,19 @@ interface CarsListProps {
 
 const CarsList = ({ cars }: CarsListProps) => {
   const router = useRouter();
-  const { favorites, toggleFavorite } = useFavorites();
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+
+  const toggleFavorite = (id: string) => {
+    setFavorites((prev) => {
+      const newFavorites = new Set(prev);
+      if (newFavorites.has(id)) {
+        newFavorites.delete(id);
+      } else {
+        newFavorites.add(id);
+      }
+      return newFavorites;
+    });
+  };
 
   return (
     <ul className={css.list}>
