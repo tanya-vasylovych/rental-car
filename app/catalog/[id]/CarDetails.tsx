@@ -8,6 +8,7 @@ import CarImage from "@/components/CarImage/CarImage";
 import CarForm from "@/components/CarForm/CarForm";
 import Details from "@/components/Details/Details";
 import CarInfo from "@/components/CarInfo/CarInfo";
+import CarLoader from "@/components/CarLoader/CarLoader";
 
 const CarDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -43,7 +44,7 @@ const CarDetails = () => {
           </div>
         </div>
       )}
-      {isLoading && <p>Loading, please wait...</p>}
+      {isLoading && <CarLoader />}
       {error && !car && <p>Something went wrong.</p>}
     </>
   );

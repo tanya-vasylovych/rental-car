@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import CarsList from "@/components/CarsList/CarsList";
 import { Car } from "@/types/cars";
 import Filter from "@/components/Filter/Filter";
+import CarLoader from "@/components/CarLoader/CarLoader";
 
 const CarsClient = () => {
   const [page, setPage] = useState(1);
@@ -76,18 +77,24 @@ const CarsClient = () => {
   return (
     <div>
       <Filter onFilterChange={handleFilterChange} />
-      {isLoading && !data && <div>Loading...</div>}
+      {isLoading && !data && <CarLoader />}
       {isSuccess && data?.cars && data.cars.length > 0 ? (
         <>
           <CarsList cars={data.cars} />
           {page < data.totalPages && (
-            <button
-              className={css.button}
-              onClick={() => handlePageChange(page + 1)}
-              disabled={isLoading}
-            >
-              Load more
-            </button>
+            <div>
+              {isLoading ? (
+                <CarLoader />
+              ) : (
+                <button
+                  className={css.button}
+                  onClick={() => handlePageChange(page + 1)}
+                  disabled={isLoading}
+                >
+                  Load more
+                </button>
+              )}
+            </div>
           )}
         </>
       ) : (
